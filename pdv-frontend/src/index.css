@@ -1,0 +1,168 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Root Variables ──────────────────────────────────────────────── */
+:root {
+  --color-canvas:  #FAF9F6;
+  --color-navy:    #0A1128;
+  --color-gold:    #C5A059;
+  --font-serif:    'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+  --font-sans:     'Plus Jakarta Sans', 'Outfit', system-ui, sans-serif;
+}
+
+/* ── Base Resets ─────────────────────────────────────────────────── */
+@layer base {
+  * {
+    @apply border-border;
+    box-sizing: border-box;
+  }
+
+  html {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-canvas text-navy-deep;
+    min-height: 100vh;
+  }
+
+  /* Remove default number input arrows */
+  input[type='number']::-webkit-inner-spin-button,
+  input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  input[type='number'] {
+    -moz-appearance: textfield;
+  }
+}
+
+/* ── Component Layer ─────────────────────────────────────────────── */
+@layer components {
+
+  /* ── Input Luxury ─── */
+  .input-luxury {
+    @apply w-full px-4 py-3 rounded-md border border-border
+           bg-white text-navy-deep font-sans text-sm
+           placeholder:text-slate-400
+           focus:outline-none focus:ring-2 focus:ring-gold/40 focus:border-gold
+           transition-all duration-200;
+  }
+
+  /* ── Label Luxury ─── */
+  .label-luxury {
+    @apply block text-xs font-semibold tracking-widest uppercase text-navy-muted mb-2;
+  }
+
+  /* ── Button Primary (Midnight Navy) ─── */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2
+           px-6 py-3 rounded-md
+           bg-navy-deep text-white font-sans font-semibold text-sm tracking-wide
+           border border-transparent
+           hover:bg-navy-hover
+           focus:outline-none focus:ring-2 focus:ring-gold/50 focus:ring-offset-2
+           active:scale-[0.98]
+           transition-all duration-200
+           disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100;
+  }
+
+  /* ── Button Gold Outline ─── */
+  .btn-gold-outline {
+    @apply inline-flex items-center justify-center gap-2
+           px-6 py-3 rounded-md
+           bg-transparent text-gold font-sans font-semibold text-sm tracking-wide
+           border border-gold
+           hover:bg-gold hover:text-navy-deep
+           focus:outline-none focus:ring-2 focus:ring-gold/50 focus:ring-offset-2
+           active:scale-[0.98]
+           transition-all duration-200
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  /* ── Button Danger ─── */
+  .btn-danger {
+    @apply inline-flex items-center justify-center gap-2
+           px-4 py-2 rounded-md
+           bg-danger/10 text-danger font-sans font-semibold text-sm
+           border border-danger/20
+           hover:bg-danger hover:text-white
+           focus:outline-none focus:ring-2 focus:ring-danger/40
+           active:scale-[0.98]
+           transition-all duration-200;
+  }
+
+  /* ── Card Luxury ─── */
+  .card-luxury {
+    @apply bg-white rounded-lg border border-border shadow-luxury;
+  }
+
+  /* ── Divider ─── */
+  .divider-gold {
+    @apply w-12 h-px bg-gold mx-auto my-4;
+  }
+
+  /* ── Gold Badge ─── */
+  .badge-gold {
+    @apply inline-flex items-center gap-1 px-2 py-0.5
+           bg-gold/10 text-gold border border-gold/30
+           rounded-sm text-[10px] font-semibold tracking-widest uppercase;
+  }
+
+  /* ── Table Luxury ─── */
+  .table-luxury {
+    @apply w-full text-sm font-sans;
+  }
+  .table-luxury thead tr {
+    @apply border-b border-border;
+  }
+  .table-luxury thead th {
+    @apply py-3 px-4 text-left text-[10px] font-semibold tracking-widest
+           uppercase text-navy-muted;
+  }
+  .table-luxury tbody tr {
+    @apply border-b border-border/60 hover:bg-surface/60 transition-colors duration-150;
+  }
+  .table-luxury tbody td {
+    @apply py-3 px-4 text-navy-deep;
+  }
+
+  /* ── Serif Display ─── */
+  .text-serif-display {
+    font-family: var(--font-serif);
+  }
+
+  /* ── Scrollbar luxury ─── */
+  .scrollbar-luxury::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+  .scrollbar-luxury::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .scrollbar-luxury::-webkit-scrollbar-thumb {
+    @apply bg-border rounded-full;
+  }
+  .scrollbar-luxury::-webkit-scrollbar-thumb:hover {
+    @apply bg-gold/40;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.97);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .animate-fadeIn {
+    animation: fadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+}
